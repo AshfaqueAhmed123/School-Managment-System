@@ -21,9 +21,18 @@ const parentSchema = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Student"
     },
+    mettings:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Meeting"
+        }
+    ],
     profile_pic:{
         type:String,
-    }
+    },
+    refreshToken:{
+        type:String
+    },
 },{
     timestamps : true
 })

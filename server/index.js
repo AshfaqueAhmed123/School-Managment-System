@@ -21,6 +21,12 @@ app.use(cors({
     origin : process.env.CORS_ORIGIN
 }))
 
+// test route
+app.get("/",(req,res)=>{
+    res.status(200).json({
+        message:"All running good...."
+    })
+}) 
 
 app.listen(PORT, () => {
     console.log(`Server listening at port ${PORT}...`);

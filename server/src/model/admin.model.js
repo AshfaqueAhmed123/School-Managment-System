@@ -23,7 +23,10 @@ const adminSchema = new Schema({
     },
     profile_pic:{
         type:String
-    }
+    },
+    refreshToken:{
+        type:String
+    },
 },{
     timestamps:true
 })

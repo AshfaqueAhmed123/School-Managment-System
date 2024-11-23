@@ -1,4 +1,4 @@
-import mongoose,{Schema,model} from "mongoose";
+import mongoose,{Schema,model, mongo} from "mongoose";
 
 const teacherSchema = new Schema({
 
@@ -30,10 +30,18 @@ const teacherSchema = new Schema({
         type:String,
         required:true
     },
+    meetings:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Meeting"
+        }
+    ],
     profile_pic:{
         type:String
-    }
-
+    },
+    refreshToken:{
+        type:String
+    },
 },{
     timestamps : true
 })

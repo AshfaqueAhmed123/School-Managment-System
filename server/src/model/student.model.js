@@ -28,7 +28,10 @@ const studentSchema = new Schema({
     },
     profile_pic:{
         type:String
-    }
+    },
+    refreshToken:{
+        type:String
+    },
 },{timestamps:true})
 
 export const Student = model("Student",studentSchema); 
