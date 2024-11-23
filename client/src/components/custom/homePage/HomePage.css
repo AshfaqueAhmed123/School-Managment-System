@@ -29,3 +29,15 @@
   li:hover{
     cursor: pointer;
   }
+
+  /* media query */
+
+  @media (max-width:1200px) {
+      .custom-container{
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+      .btn{
+        padding: 14px 22px;
+      }
+  }
