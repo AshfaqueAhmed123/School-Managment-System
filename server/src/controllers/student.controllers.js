@@ -1,15 +1,15 @@
-import { Admin } from "../model/admin.model.js";
+import { Student } from "../model/student.model.js";
 import ApiResponse from "../utils/ApiResponse.utils.js";
 import ApiError from "../utils/ApiError.utils.js";
 
 const generateAccessAndRefereshTokens = async (userId) => {
   try {
-    const admin = await Admin.findById(userId);
-    const accessToken = admin.generateAccessToken();
-    const refreshToken = admin.generateRefreshToken();
+    const student = await Student.findById(userId);
+    const accessToken = student.generateAccessToken();
+    const refreshToken = student.generateRefreshToken();
 
-    admin.refreshToken = refreshToken;
-    await admin.save({ validateBeforeSave: false });
+    student.refreshToken = refreshToken;
+    await student.save({ validateBeforeSave: false });
 
     return { accessToken, refreshToken };
   } catch (error) {
@@ -19,18 +19,19 @@ const generateAccessAndRefereshTokens = async (userId) => {
 
 const register = async (req, res) => {
   try {
-    const { fullname, email, phone_number, password, description } = req.body;
+    const { fullname, email, rollNo, classLetter, password, profile_pic } =
+      req.body;
 
     if (
-      [fullname, email, phone_number, password].some(
+      [fullname, email, phone_number, password, rollNo, classLetter].some(
         (field) => field?.trim() === ""
       )
     ) {
       return res.status(400).json(new ApiError(400, "All fields are required"));
     }
 
-    const existedUser = await Admin.findOne({
-      $or: [{ fullname }, { email }],
+    const existedUser = await Student.findOne({
+      $or: [{ fullname }, { email }, { rollNo }],
     });
 
     if (existedUser) {
@@ -39,19 +40,20 @@ const register = async (req, res) => {
         .json(new ApiError(400, "user already exists with same name or email"));
     }
 
-    const admin = await Admin.create({
+    const Student = await Student.create({
       fullname,
       email,
       phone_number,
       password,
-      description,
+      rollNo,
+      classLetter,
     });
 
     return res
       .status(200)
-      .json(new ApiResponse(200, "user created sucessfully", admin));
+      .json(new ApiResponse(200, "user created sucessfully", Student));
   } catch (error) {
-    return res.status(500).json(new ApiError(500, error.message));
+    return res.status(500).json();
   }
 };
 
@@ -65,10 +67,10 @@ const login = async (req, res) => {
         .json(new ApiError(400, "email and password is required"));
     }
 
-    const admin = await Admin.findOne({ email });
+    const student = await Student.findOne({ email });
 
-    if (!admin) {
-      return res.status(400).json(new ApiError(400, "admin not found"));
+    if (!student) {
+      return res.status(400).json(new ApiError(400, "student not found"));
     }
 
     const isPasswordValid = await admin.isPasswordCorrect(password);
@@ -78,10 +80,10 @@ const login = async (req, res) => {
     }
 
     const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(
-      admin._id
+      student._id
     );
 
-    const loggedInUser = await Admin.findById(admin._id).select(
+    const loggedInUser = await Student.findById(student._id).select(
       "-password -refreshToken"
     );
 
@@ -93,16 +95,14 @@ const login = async (req, res) => {
       })
     );
   } catch (error) {
-    return res
-      .status(500)
-      .json(new ApiError(500, error?.message || "something went wrong"));
+    return res.status(500).json();
   }
 };
 
 const logout = async (req, res) => {
   try {
-    await Admin.findByIdAndUpdate(
-      req.admin._id,
+    await Student.findByIdAndUpdate(
+      req.student._id,
       {
         $unset: {
           refreshToken: 1, // this removes the field from document
@@ -112,23 +112,24 @@ const logout = async (req, res) => {
         new: true,
       }
     );
-    return res.status(200).json(
-      new ApiResponse(200,"logged out sucessfully")
-    )
+    return res.status(200).json(new ApiResponse(200, "logged out sucessfully"));
   } catch (error) {
-    return res
-      .status(500)
-      .json(new ApiError(500, error?.message || "something went wrong"));
+    return res.status(500).json();
   }
 };
 
 const updateAccountDetails = async (req, res) => {
   try {
   } catch (error) {
-    return res
-      .status(500)
-      .json(new ApiError(500, error?.message || "something went wrong"));
+    return res.status(500).json();
   }
 };
 
-export { register, login, logout, updateAccountDetails };
+const refreshAccessToken = async (req, res) => {
+  try {
+  } catch (error) {
+    return res.status(500).json();
+  }
+};
+
+export { register, login, logout, updateAccountDetails, refreshAccessToken };

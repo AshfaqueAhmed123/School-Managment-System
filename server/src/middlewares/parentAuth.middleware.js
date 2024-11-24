@@ -1,9 +1,9 @@
-import { Student } from "../model/student.model.js";
+import { Parent } from "../model/parent.model.js";
 import ApiError from "../utils/ApiError.utils.js";
 import ApiResponse from "../utils/ApiResponse.utils.js";
 import jwt from "jsonwebtoken";
 
-export const verfityStudent = async (req, res, next) => {
+export const verifyParent = async (req, res, next) => {
   try {
     const token =
       req.cookies?.accessToken ||
@@ -16,15 +16,15 @@ export const verfityStudent = async (req, res, next) => {
 
     const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-    const student = await Student.findById(decodedToken?._id).select(
+    const parent = await Parent.findById(decodedToken?._id).select(
       "-password -refreshToken"
     );
 
-    if (!student) {
+    if (!parent) {
       throw new ApiError(401, "Invalid Access Token");
     }
 
-    req.student = student;
+    req.parent = parent;
     next();
   } catch (error) {
     return res.status(400).json(new ApiError(400, error.message));
