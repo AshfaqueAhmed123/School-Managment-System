@@ -1,0 +1,50 @@
+/* google font link */
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
+
+/* home page css classes */
+.custom-container{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  
+  .btn{
+    background:#fff;
+    color: #212121;
+    padding: 14px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: 0.5s;
+  }
+
+  .btn:hover{
+    opacity: 0.70;
+    border-color: #212EA0;
+  }
+  
+  .btn.dark-btn{
+    background-color: #212EA0;
+    color: #fff;
+  }
+  
+  li:hover{
+    cursor: pointer;
+  }
+
+  /* media query */
+
+  @media (max-width:1200px) {
+      .custom-container{
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+      .btn{
+        padding: 14px 22px;
+      }
+  }
