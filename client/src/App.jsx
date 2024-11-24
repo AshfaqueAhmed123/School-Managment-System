@@ -1,12 +1,10 @@
 import React from 'react'
-import HomePage from './components/custom/homePage/HomePage'
-import AdminDashboard from './pages/adminDashboard/AdminDashboard'
+import HomePage from './pages/homepage/HomePage'
 
 const App = () => {
   return (
     <div>
-      {/* <HomePage/> */}
-      <AdminDashboard/>
+      <HomePage/> 
     </div>
   )
 }

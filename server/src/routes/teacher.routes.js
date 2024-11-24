@@ -1,11 +1,19 @@
 import {Router} from "express"
+import {
+
+    register,
+    login,
+    logout
+
+} from "../controllers/teacher.controllers.js"
+import { verifyTeacher } from "../middlewares/teacherAuth.middleware.js";
 
 const router = Router();
 
 
-router.route("/create-account").post();
-router.route("/login").post();
-router.route("/logout").post();
+router.route("/register").post(register);
+router.route("/login").post(login);
+router.route("/logout").post(verifyTeacher,logout);
 router.route("account-details").get();
 router.route("/updateAccount").patch();
 

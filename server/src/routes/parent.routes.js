@@ -11,7 +11,7 @@ import {verifyParent} from "../middlewares/parentAuth.middleware.js"
 const router = Router();
 
 
-router.route("/create-account").post(register);
+router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").post(verifyParent,logout);
 router.route("/updateAccount").patch(verifyParent,updateAccountDetails);

@@ -33,7 +33,7 @@ const register = async (req,res)=>{
       }
   
       const existedUser = await Parent.findOne({
-        $or: [{ fullname }, { email }, { rollNo }],
+        $or: [{ fullname }, { email }],
       });
   
       if (existedUser) {
@@ -55,6 +55,7 @@ const register = async (req,res)=>{
         .json(new ApiResponse(200, "user created sucessfully", parent));
     } catch (error) {
         return res.status(500).json(
+          new ApiError(500,error?.message)
         )
     }
 }
@@ -65,7 +66,7 @@ const login = async (req,res)=>{
         
     } catch (error) {
         return res.status(500).json(
-
+          new ApiError(500,error?.message)
         )
     }
 }
@@ -76,7 +77,7 @@ const logout = async (req,res)=>{
         
     } catch (error) {
         return res.status(500).json(
-
+          new ApiError(500,error?.message)
         )
     }
 }
@@ -87,7 +88,7 @@ const updateAccountDetails = async (req,res)=>{
         
     } catch (error) {
         return res.status(500).json(
-
+          new ApiError(500,error?.message)
         )
     }
 }
@@ -98,7 +99,7 @@ const refreshAccessToken = async (req,res)=>{
         
     } catch (error) {
         return res.status(500).json(
-
+          new ApiError(500,error?.message)
         )
     }
 }

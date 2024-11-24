@@ -85,7 +85,6 @@ const login = async (req, res) => {
       "-password -refreshToken"
     );
 
-    console.log(accessToken, refreshToken);
     return res.status(200).json(
       new ApiResponse(200, "admin logged in succesfully", {
         accessToken,

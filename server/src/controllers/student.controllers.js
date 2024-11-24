@@ -19,20 +19,19 @@ const generateAccessAndRefereshTokens = async (userId) => {
 
 const register = async (req, res) => {
   try {
-    const { fullname, email, rollNo, classLetter, password, profile_pic } =
-      req.body;
+    const { fullname, email, rollNo, classLetter, password,phone_number, profile_pic } = req.body;
 
     if (
-      [fullname, email, phone_number, password, rollNo, classLetter].some(
-        (field) => field?.trim() === ""
+      [!fullname, !email, !password, !rollNo, !classLetter].some(
+        (field) => field === ""
       )
     ) {
       return res.status(400).json(new ApiError(400, "All fields are required"));
     }
 
     const existedUser = await Student.findOne({
-      $or: [{ fullname }, { email }, { rollNo }],
-    });
+      $or: [{ fullname }, { email }]
+    });    
 
     if (existedUser) {
       return res
@@ -40,7 +39,7 @@ const register = async (req, res) => {
         .json(new ApiError(400, "user already exists with same name or email"));
     }
 
-    const Student = await Student.create({
+    const createdStudent = await Student.create({
       fullname,
       email,
       phone_number,
@@ -51,9 +50,11 @@ const register = async (req, res) => {
 
     return res
       .status(200)
-      .json(new ApiResponse(200, "user created sucessfully", Student));
+      .json(new ApiResponse(200, "user created sucessfully", createdStudent));
   } catch (error) {
-    return res.status(500).json();
+    return res.status(500).json(
+      new ApiError(500,error?.message)
+    );
   }
 };
 
@@ -73,7 +74,7 @@ const login = async (req, res) => {
       return res.status(400).json(new ApiError(400, "student not found"));
     }
 
-    const isPasswordValid = await admin.isPasswordCorrect(password);
+    const isPasswordValid = await student.isPasswordCorrect(password);
 
     if (!isPasswordValid) {
       return res.status(401).json(new ApiError("no"));
@@ -89,13 +90,15 @@ const login = async (req, res) => {
 
     console.log(accessToken, refreshToken);
     return res.status(200).json(
-      new ApiResponse(200, "admin logged in succesfully", {
+      new ApiResponse(200, "student logged in succesfully", {
         accessToken,
         refreshToken,
       })
     );
   } catch (error) {
-    return res.status(500).json();
+    return res.status(500).json(
+      new ApiError(500,error?.message)
+    );
   }
 };
 
@@ -114,7 +117,9 @@ const logout = async (req, res) => {
     );
     return res.status(200).json(new ApiResponse(200, "logged out sucessfully"));
   } catch (error) {
-    return res.status(500).json();
+    return res.status(500).json(
+      new ApiError(500,error?.message)
+    );
   }
 };
 
