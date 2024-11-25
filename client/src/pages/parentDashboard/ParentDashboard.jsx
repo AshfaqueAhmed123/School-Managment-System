@@ -1,8 +1,16 @@
 import React from 'react'
+import App from "./App.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { SidebarProvider } from "./context/SidebarContext.jsx";
+
 
 const ParentDashboard = () => {
   return (
-    <div>ParentDashboard</div>
+    <ThemeProvider>
+    <SidebarProvider>
+      <App />
+    </SidebarProvider>
+  </ThemeProvider>
   )
 }
 
