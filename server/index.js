@@ -45,6 +45,10 @@ app.use("/teacher", teacherRouter);
 app.use("/parent", parentRouter);
 app.use("/school", schoolRouter);
 
+// AuthRoutes
+import authRouter from "./src/routes/auth.routes.js"
+app.use("/Auth",authRouter)
+
 app.listen(PORT, () => {
   console.log(`Server listening at port ${PORT}...`);
 });
