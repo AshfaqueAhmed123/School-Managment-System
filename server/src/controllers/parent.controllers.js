@@ -63,7 +63,44 @@ const register = async (req,res)=>{
 
 const login = async (req,res)=>{
     try {
-        
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return res
+          .status(400)
+          .json(new ApiError(400, "email and password is required"));
+      }
+
+    const parent = await Parent.findOne({ email });
+
+    if (!parent) {
+      return res.status(400).json(new ApiError(400, "parent not found"));
+    }
+
+    const isPasswordValid = await parent.isPasswordCorrect(password);
+
+
+    if (!isPasswordValid) {
+      return res.status(401).json(new ApiError({
+         statusCode:401,
+         message:"incorrect password"
+      }));
+    }
+
+    const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(
+      parent._id
+    );
+
+    const loggedInUser = await Parent.findById(parent._id).select(
+      "-password -refreshToken"
+    );
+
+    return res.status(200).json(
+      new ApiResponse(200, "parent logged in succesfully", {
+        accessToken,
+        refreshToken,
+      })
+    );
     } catch (error) {
         return res.status(500).json(
           new ApiError(500,error?.message)

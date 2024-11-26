@@ -74,7 +74,10 @@ const login = async (req, res) => {
     const isPasswordValid = await admin.isPasswordCorrect(password);
 
     if (!isPasswordValid) {
-      return res.status(401).json(new ApiError("no"));
+      return res.status(401).json(new ApiError({
+        statusCode:401,
+        message:"incorrect password"
+      }));
     }
 
     const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(
