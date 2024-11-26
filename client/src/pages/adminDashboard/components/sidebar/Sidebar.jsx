@@ -22,8 +22,12 @@ import { GrUserWorker } from "react-icons/gr";
 import { FaDollarSign } from "react-icons/fa";
 
 
+import {useNavigate} from "react-router-dom"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const notify = (message="something went wrong") => toast.error(message);
 
 
 import { Link } from "react-router-dom";
@@ -54,12 +58,39 @@ const Sidebar = () => {
   }, []);
 
 
+  let navigate = useNavigate();
+  const logout = () => {
+    let confirmation = confirm("do you want to logout?")
+    if(confirmation){
+    try {
+      (async ()=>{
+        let res = await fetch("http://localhost:4000/admin/logout",{
+          method:"POST",
+          headers:{
+            "content-type":"application/json",
+            "Authorization":`Bearer ${localStorage.getItem("adminToken")}`
+          }
+        });
+        res = await res.json()
+        if(res.statusCode == 200){
+          localStorage.removeItem("adminToken")
+          navigate("/")
+        }
+      })()
+    } catch (error) {
+      notify(error?.message || "something went wrong")
+    }
+  }
+  } 
+
+
 
   return (
     <nav
       className={`sidebar ${isSidebarOpen ? "sidebar-show" : ""}`}
       ref={navbarRef}
     >
+       <ToastContainer />
       <div className="sidebar-top">
         <div className="sidebar-brand">
           <img src={theme === LIGHT_THEME ? LogoBlue : LogoWhite} alt="" />
@@ -133,7 +164,7 @@ const Sidebar = () => {
                 <span className="menu-link-text">Settings</span>
               </Link>
             </li>
-            <li className="menu-item">
+            <li className="menu-item" onClick={logout}>
               <Link to="" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
