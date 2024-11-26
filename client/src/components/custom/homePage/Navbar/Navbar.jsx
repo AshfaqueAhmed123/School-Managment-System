@@ -4,6 +4,7 @@ import "./Navbar.css";
 import logo from "../../../../assets/logo.png";
 import {Link} from "react-scroll"
 import menu_icon from "../../../../assets/menu-icon.png"
+import {Link as RLink} from "react-router-dom"
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
@@ -114,9 +115,11 @@ const Navbar = () => {
         <li className="inline-block my-2 mx-6 text-[16px]">
         <Link className='btn' to='contact' smooth={true} offset={-260} duration={500}>Contac Us</Link>
         </li>
+        <RLink to="/login">
         <li className={`${!isLoggedIn ? "btn inline-block my-2 mx-6 text-[16px]" : "hidden"}`}>
             sign in
         </li>
+        </RLink>
         <li className={"inline-block my-2 mx-6 text-[16px]"}>
         <Link className={`px-6 py-5 rounded-3xl bg-yellow-600 transition-all hover:bg-yellow-500 text-black ${isLoggedIn?"":"hidden"} `} to='' smooth={true} offset={-260} duration={500}
         onClick={()=>{

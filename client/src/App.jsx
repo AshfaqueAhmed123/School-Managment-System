@@ -6,6 +6,8 @@ import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
 import StudentDashboard from "./pages/studentDashboard/StudentDashboard";
 import TeacherDashboard from "./pages/teacherDashboard/TeacherDashboard";
 import ParentDashboard from "./pages/parentDashboard/ParentDashboard";
+import SigninOptions from "./pages/AuthPages/Login/SigninOptions";
+import RegisterOptions from "./pages/AuthPages/SignUp/RegisterOptions";
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
             <Route path="/student/*" element={<StudentDashboard/>} />
             <Route path="/teacher/*" element={<TeacherDashboard/>} />
             <Route path="/parent/*" element={<ParentDashboard/>} />
+            <Route path="/login/*" element={<SigninOptions/>} />
+            <Route path="/register/*" element={<RegisterOptions/>} />
         </Routes>
       </Router>
     </div>
