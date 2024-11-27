@@ -68,7 +68,7 @@ const StudyResources = () => {
               name="title"
               value={newResource.title}
               onChange={handleInputChange}
-              className="w-full mt-2 p-2 bg-[#475BE8] text-white rounded-md focus:outline-none"
+              className="w-full mt-2 p-2 bg-[#2E2E48]  text-white rounded-md focus:outline-none"
               required
             />
           </div>
@@ -80,7 +80,7 @@ const StudyResources = () => {
               name="description"
               value={newResource.description}
               onChange={handleInputChange}
-              className="w-full mt-2 p-2 bg-[#475BE8] text-white rounded-md focus:outline-none"
+              className="w-full mt-2 p-2 bg-[#2E2E48]  text-white rounded-md focus:outline-none"
               required
             />
           </div>
@@ -91,7 +91,7 @@ const StudyResources = () => {
               type="file"
               id="file"
               onChange={handleFileChange}
-              className="w-full mt-2 p-2 bg-[#475BE8] text-white rounded-md focus:outline-none"
+              className="w-full mt-2 p-2 bg-[#2E2E48]  text-white rounded-md focus:outline-none"
               required
             />
           </div>

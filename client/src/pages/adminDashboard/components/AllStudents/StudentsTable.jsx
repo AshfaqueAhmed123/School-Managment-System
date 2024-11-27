@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 
+import { FaPlus } from "react-icons/fa";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+
 // Dummy data for the students
 const studentData = {
   "Class 1": [
@@ -43,7 +55,20 @@ function Accordion() {
             onClick={handleCreateNewStudent}
             className="mb-10 float-right px-6 py-2 bg-[#475BE8] text-white rounded hover:bg-blue-600"
           >
-            Create New Student
+           <Dialog>
+            <DialogTrigger className="flex items-center">
+              <FaPlus className="mr-2" />
+              Create new Student
+            </DialogTrigger>
+            <DialogContent className="bg-[#383854] text-white">
+              <DialogHeader>
+                <DialogTitle className="mb-3 mx-3">Create New Student</DialogTitle>
+                <DialogDescription className="h-[80vh] overflow-scroll">
+                    
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
           </button>
         </div>
 

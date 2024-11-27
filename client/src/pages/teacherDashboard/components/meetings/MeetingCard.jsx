@@ -1,27 +1,33 @@
-import React from 'react'
+import React from 'react';
+import { FaPlay, FaTrash } from 'react-icons/fa';
 
-const MeetingCard = () => {
+const MeetingCard = ({ meeting }) => {
   return (
-    <div>
+    <div className="h-[80%] mx-10 bg-[#2E2E48] border-4 border-[#2E2E48] text-white rounded-lg p-6 flex flex-col justify-between mb-10">
       <div>
-      <div className="card bg-[#2E2E48] border-2 border-[#475BE8] p-4 m-10 rounded-lg text-white" style={{fontFamily:"var(--font-family-manrope)"}}>
-        <ul>
-        <h2 className='capitalize text-white text-3xl'>meeting with:</h2>
-        <li>
-        student's parent : Qurban Ali
-        </li>
-        <li>student : Ashfaque</li>
-        <li>class : x (th)</li>
-        <li className='text-red-400 text-xl'>schedule time : 1:44pm monday 12/2/2024</li>
-        </ul>
-        <div className='flex items-center justify-end gap-10'>
-          <button className='px-10 py-4 rounded-[40px] capitalize bg-orange-700 transition-all hover:bg-orange-800'>delete</button>
-          <button className='px-10 py-4 rounded-[40px] capitalize bg-green-700 transition-all hover:bg-green-800'>start</button>
+        <h3 className="text-2xl font-semibold">{meeting.title}</h3>
+        <p className="text-sm mt-2">{meeting.description}</p>
+        <div className="mt-4">
+          <p className="text-sm">Date: {meeting.date}</p>
+          <p className="text-sm">Time: {meeting.time}</p>
+          <p className="text-sm">student: {meeting.student}</p>
+          <p className="text-sm">class: {meeting.class}</p>
+          <p className="text-sm">parent: {meeting.parent}</p>
         </div>
       </div>
+
+      <div className="mt-4 flex space-x-4 items-center justify-end">
+        <button className="flex items-center px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-200">
+          <FaPlay className="mr-2" />
+          Start
+        </button>
+        <button className="flex items-center px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200">
+          <FaTrash className="mr-2" />
+          Delete
+        </button>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default MeetingCard

@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
+import CreateNewClassForm from "./CreateNewClassForm"
 
+import { FaPlus } from "react-icons/fa";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const ClassTable = () => {
   // Dummy teacher data
@@ -26,7 +37,20 @@ const ClassTable = () => {
     <div className="p-6">
       <div className="flex justify-end mb-4">
         <button className="px-4 py-2 bg-[#475BE8] text-white rounded-lg hover:bg-blue-600 focus:outline-none">
-          Create Class
+        <Dialog>
+            <DialogTrigger className="flex items-center">
+              <FaPlus className="mr-2" />
+              Create Class
+            </DialogTrigger>
+            <DialogContent className="bg-[#383854] text-white">
+              <DialogHeader>
+                <DialogTitle className="mb-3 mx-3">Create New Class</DialogTitle>
+                <DialogDescription className="h-[80vh] overflow-scroll">
+                    <CreateNewClassForm/>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </button>
       </div>
 

@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { FaPlus } from "react-icons/fa";
 
-let color = [
-    "#2E2E48",
-    "#383854",
-    "#475BE8"
-]
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import CreateTeacherForm from "./CreateNewTeacherForm";
+
+let color = ["#2E2E48", "#383854", "#475BE8"];
 
 const TeacherTable = () => {
   // Dummy teacher data
   const [teachers, setTeachers] = useState([
-    { name: 'John Doe', subject: 'Math', class: '10th' },
-    { name: 'Jane Smith', subject: 'English', class: '12th' },
-    { name: 'Emma Brown', subject: 'Science', class: '9th' },
-    { name: 'Michael Johnson', subject: 'History', class: '11th' },
-    { name: 'Olivia Davis', subject: 'Geography', class: '10th' }
+    { name: "John Doe", subject: "Math", class: "10th" },
+    { name: "Jane Smith", subject: "English", class: "12th" },
+    { name: "Emma Brown", subject: "Science", class: "9th" },
+    { name: "Michael Johnson", subject: "History", class: "11th" },
+    { name: "Olivia Davis", subject: "Geography", class: "10th" },
   ]);
 
   // Function to handle the deletion of a teacher
@@ -27,7 +34,20 @@ const TeacherTable = () => {
       {/* Create Teacher Button */}
       <div className="flex justify-end mb-4">
         <button className="px-4 py-2 bg-[#475BE8] text-white rounded-lg hover:bg-blue-600 focus:outline-none">
-          Create Teacher
+          <Dialog>
+            <DialogTrigger className="flex items-center">
+              <FaPlus className="mr-2" />
+              Create Teacher
+            </DialogTrigger>
+            <DialogContent className="bg-[#383854] text-white">
+              <DialogHeader>
+                <DialogTitle className="mb-3 mx-3">create new teacher</DialogTitle>
+                <DialogDescription className="h-[80vh] overflow-scroll">
+                  <CreateTeacherForm/>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </button>
       </div>
 
@@ -35,17 +55,28 @@ const TeacherTable = () => {
       <div className="overflow-x-auto bg-[#2E2E48] p-6 rounded-lg shadow-lg">
         <table className="min-w-full table-auto">
           <thead className="bg-[#2E2E48] text-white">
-            <tr className='border-2 border-white p-2'>
-              <th className="px-6 py-3 text-left text-xl font-medium">Teacher Name</th>
-              <th className="px-6 py-3 text-left text-xl font-medium">Teacher Subject</th>
-              <th className="px-6 py-3 text-left text-xl font-medium">Teacher Class</th>
-              <th className="px-6 py-3 text-left text-xl font-medium">Actions</th> {/* New Column for Delete */}
+            <tr className="border-2 border-white p-2">
+              <th className="px-6 py-3 text-left text-xl font-medium">
+                Teacher Name
+              </th>
+              <th className="px-6 py-3 text-left text-xl font-medium">
+                Teacher Subject
+              </th>
+              <th className="px-6 py-3 text-left text-xl font-medium">
+                Teacher Class
+              </th>
+              <th className="px-6 py-3 text-left text-xl font-medium">
+                Actions
+              </th>{" "}
+              {/* New Column for Delete */}
             </tr>
           </thead>
           <tbody className="bg-[#2E2E48] text-white">
             {teachers.map((teacher, index) => (
               <tr key={index} className="hover:bg-[#383854]">
-                <td className="px-6 py-4 text-sm font-medium">{teacher.name}</td>
+                <td className="px-6 py-4 text-sm font-medium">
+                  {teacher.name}
+                </td>
                 <td className="px-6 py-4 text-sm">{teacher.subject}</td>
                 <td className="px-6 py-4 text-sm">{teacher.class}</td>
                 <td className="px-6 py-4 text-sm text-center">

@@ -64,7 +64,7 @@ const Assignments = () => {
               name="title"
               value={newAssignment.title}
               onChange={handleInputChange}
-              className="w-full mt-2 p-2 bg-[#475BE8] text-white rounded-md focus:outline-none"
+              className="w-full mt-2 p-2 bg-[#2E2E48] text-white rounded-md focus:outline-none"
               required
             />
           </div>
@@ -77,7 +77,7 @@ const Assignments = () => {
               name="dueDate"
               value={newAssignment.dueDate}
               onChange={handleInputChange}
-              className="w-full mt-2 p-2 bg-[#475BE8] text-white rounded-md focus:outline-none"
+              className="w-full mt-2 p-2 bg-[#2E2E48] text-white rounded-md focus:outline-none"
               required
             />
           </div>

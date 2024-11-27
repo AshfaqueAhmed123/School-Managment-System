@@ -1,8 +1,11 @@
+import UpdatePassword from '@/pages/studentDashboard/components/settings/PasswordUpdateForm'
 import React from 'react'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <div>
+      <UpdatePassword/>
+    </div>
   )
 }
 
