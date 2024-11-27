@@ -10,6 +10,7 @@ const Options = () => {
   return (
     <div className="min-h-screen bg-[#383854] flex flex-col items-center justify-center">
       {/* create account btn  */}
+      {/*
       <Link to="/register" className="absolute top-2 right-2" style={{zIndex:"1000"}}>
         <button className="relative px-8 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-full shadow-lg overflow-hidden group">
           <span className="absolute inset-0 bg-white opacity-10 transform scale-x-0 group-hover:scale-x-100 group-hover:opacity-30 transition duration-300 origin-right group-hover:origin-left"></span>
@@ -17,7 +18,7 @@ const Options = () => {
             create account
           </span>
         </button>
-      </Link>
+      </Link>*/}
 
       <h1 className="mt-[-60px] mb-[30px] text-2xl text-white capitalize">
         sign in as : (choose role){" "}

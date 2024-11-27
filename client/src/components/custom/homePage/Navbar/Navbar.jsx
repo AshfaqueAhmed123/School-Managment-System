@@ -81,46 +81,46 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`" w-full text-white px-0 py-3  fixed top-0 left-0 flex items-center justify-between z-10 custom-container " ${
+      className={`" w-full text-white px-0 py-3  fixed top-0 left-0 flex items-center justify-between z-10 custom-container  " ${
         sticky ? "dark-nav" : ""
       }`}
     >
       <img src={logo} className="w-[180px]" alt="ibaccdadu" />
       <ul className={mobileMenu ? "" : "hide-mobile-menu flex items-center"}>
-        <li className="inline-block my-2 mx-6 text-[16px]">
+        <li className="inline-block my-2 mx-4 text-[16px]">
           <Link to="hero" smooth={true} offset={0} duration={500}>
             Home
           </Link>
         </li>
-        <li className="inline-block my-2 mx-6 text-[16px]">
+        <li className="inline-block my-2 mx-4 text-[16px]">
           <Link to="program" smooth={true} offset={-260} duration={500}>
             Program
           </Link>
         </li>
-        <li className="inline-block my-2 mx-6 text-[16px]">
+        <li className="inline-block my-2 mx-4 text-[16px]">
           <Link to="about" smooth={true} offset={-250} duration={500}>
             About us
           </Link>
         </li>
-        {/* <li className="inline-block my-2 mx-6 text-[16px]">
+        {/* <li className="inline-block my-2 mx-4 text-[16px]">
           <Link to="college" smooth={true} offset={0} duration={500}>
             College
           </Link>
         </li> */}
-        <li className="inline-block my-2 mx-6 text-[16px]">
+        <li className="inline-block my-2 mx-4 text-[16px]">
           <Link to="testimonials" smooth={true} offset={-260} duration={500}>
           Testimonials
           </Link>
         </li>
-        <li className="inline-block my-2 mx-6 text-[16px]">
+        <li className="inline-block my-2 mx-4 text-[16px]">
         <Link className='btn' to='contact' smooth={true} offset={-260} duration={500}>Contac Us</Link>
         </li>
         <RLink to="/login">
-        <li className={`${!isLoggedIn ? "btn inline-block my-2 mx-6 text-[16px]" : "hidden"}`}>
+        <li className={"btn inline-block my-2 text-[16px]"}>
             sign in
         </li>
         </RLink>
-        <li className={"inline-block my-2 mx-6 text-[16px]"}>
+        <li className={"inline-block my-2 mx-4 text-[16px]"}>
         <Link className={`px-6 py-5 rounded-3xl bg-yellow-600 transition-all hover:bg-yellow-500 text-black ${isLoggedIn?"":"hidden"} `} to='' smooth={true} offset={-260} duration={500}
         onClick={()=>{
           redirectToDashboard(`${dashboardEndPoint}`)
