@@ -1,9 +1,10 @@
 import React from 'react'
+import TeacherTable from './Table'
 
 const Teachers = () => {
   return (
     <div>
-      Teachers
+      <TeacherTable/>
     </div>
   )
 }

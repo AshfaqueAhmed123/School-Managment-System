@@ -1,8 +1,11 @@
 import React from 'react'
+import StudyResources from './ResourceForm'
 
 const Resources = () => {
   return (
-    <div>Resources</div>
+    <div>
+      <StudyResources/>
+    </div>
   )
 }
 

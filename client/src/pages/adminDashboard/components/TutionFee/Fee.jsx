@@ -1,9 +1,10 @@
 import React from 'react'
+import TuitionFeeTracker from './FeeData'
 
 const Fee = () => {
   return (
     <div>
-      Fee 
+      <TuitionFeeTracker/> 
     </div>
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import ClassTable from './ClassTable'
 
 const Classes = () => {
   return (
     <div>
-      Classes
+      <ClassTable/>
     </div>
   )
 }

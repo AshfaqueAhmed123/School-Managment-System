@@ -1,8 +1,11 @@
 import React from 'react'
+import TimetableAccordion from './Table'
 
 const Classes = () => {
   return (
-    <div>Classes</div>
+    <div>
+      <TimetableAccordion/>
+    </div>
   )
 }
 

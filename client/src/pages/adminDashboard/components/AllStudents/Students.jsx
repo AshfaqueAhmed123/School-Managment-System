@@ -1,9 +1,10 @@
 import React from 'react'
+import Accordion from './StudentsTable'
 
 const Students = () => {
   return (
     <div>
-      Students
+      <Accordion/>
     </div>
   )
 }

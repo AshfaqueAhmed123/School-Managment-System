@@ -1,11 +1,11 @@
 import React from 'react'
-import ChildrenTable from './ChildrenTable'
+import ChildPerformanceStatus from './ChildrenTable'
 
 
 const Children = () => {
   return (
     <div>
-      <ChildrenTable/>
+      <ChildPerformanceStatus/>
     </div>
   )
 }

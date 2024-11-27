@@ -1,8 +1,11 @@
 import React from 'react'
+import TeacherAttendance from './Sheet'
 
 const Attendence = () => {
   return (
-    <div>Attendence</div>
+    <div>
+      <TeacherAttendance/>
+    </div>
   )
 }
 
