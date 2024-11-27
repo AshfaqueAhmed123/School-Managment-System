@@ -1,8 +1,12 @@
 import React from 'react'
+import ChildrenTable from './ChildrenTable'
+
 
 const Children = () => {
   return (
-    <div>Children</div>
+    <div>
+      <ChildrenTable/>
+    </div>
   )
 }
 
