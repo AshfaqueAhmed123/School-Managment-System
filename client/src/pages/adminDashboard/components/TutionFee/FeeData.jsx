@@ -34,7 +34,7 @@ const TuitionFeeTracker = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-[#1E2532] rounded-lg shadow-lg">
+    <div className="max-w-4xl mx-auto p-6 bg-[#2E2E48] rounded-lg shadow-lg">
       <h2 className="text-white text-3xl font-bold mb-6">Tuition Fee Tracker</h2>
 
       {/* Doughnut Chart showing fee status */}
