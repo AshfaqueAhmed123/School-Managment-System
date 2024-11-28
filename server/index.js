@@ -38,12 +38,15 @@ import studentRouter from "./src/routes/student.routes.js"
 import teacherRouter from "./src/routes/teacher.routes.js"
 import parentRouter from "./src/routes/parent.routes.js"
 import schoolRouter from "./src/routes/student.routes.js"
+import classRouter from "./src/routes/class.routes.js"
 
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
 app.use("/parent", parentRouter);
 app.use("/school", schoolRouter);
+app.use("/class", classRouter);
+
 
 // AuthRoutes
 import authRouter from "./src/routes/auth.routes.js"

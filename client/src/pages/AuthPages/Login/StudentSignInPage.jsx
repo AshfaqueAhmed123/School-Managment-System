@@ -38,6 +38,7 @@ const StudentSignInPage = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       (async ()=>{
+       try {
         let res = await fetch("http://localhost:4000/student/login",{
           method:"POST",
           headers:{
@@ -56,6 +57,9 @@ const StudentSignInPage = () => {
         } else{
           notify(res?.message || "something went wrong")
         }
+       } catch (error) {
+        notify(error?.message || "something went wrong")
+       }
       })(); 
     }
 

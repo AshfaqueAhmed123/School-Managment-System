@@ -10,6 +10,7 @@ import Testimonials from "./Testimonials/Testimonials";
 import ContactSection from "./Contact/Contact";
 import Footer from "./Footer/Footer";
 import VideoPlayer from "./videoplayer/VideoPlayer";
+import FacultySection from "./programs/Programs";
 
 const HomePage = () => {
 
@@ -21,8 +22,8 @@ const HomePage = () => {
       <Navbar />
       <Hero />
       <div className="custom-container">
-        <Title subtitle={"Our PROGRAM"} title={"What We Offer"} />
-        <Programs />
+        <Title subtitle={"College Faculty"} title={"Our ownerable teachers"} />
+        <FacultySection />
         <About setPlayState={setPlayState} />
         <Title subtitle={"Gallery"} title={"College Memories"} />
         <College />

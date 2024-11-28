@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import CreateNewClassForm from "./CreateNewClassForm"
 
 import { FaPlus } from "react-icons/fa";
@@ -12,20 +12,40 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+import Loader  from "@/./Loader";
+
+
 const ClassTable = () => {
   // Dummy teacher data
   const [classes, setClasses] = useState([
-        { class: '10th', teacher: 'John Doe', totalStudents: 30 },
-        { class: '12th', teacher: 'Jane Smith', totalStudents: 28 },
-        { class: '9th', teacher: 'Emma Brown', totalStudents: 32 },
-        { class: '11th', teacher: 'Michael Johnson', totalStudents: 29 },
-        { class: '10th', teacher: 'Olivia Davis', totalStudents: 31 },
-        { class: '8th', teacher: 'Sophia Miller', totalStudents: 33 },
-        { class: '7th', teacher: 'James Wilson', totalStudents: 27 },
-        { class: '6th', teacher: 'Charlotte Taylor', totalStudents: 25 },
-        { class: '5th', teacher: 'Daniel Harris', totalStudents: 35 },
-        { class: '4th', teacher: 'Amelia Clark', totalStudents: 22 }      
+        
   ]);
+
+  useEffect(() => {
+    (async ()=>{
+      try {
+        let res = await fetch(
+          "http://localhost:4000/class/getAllClasses",
+          {
+            method:"GET",
+            headers:{
+              "content-type":"application/json",
+              "Authorization":`Bearer ${localStorage.getItem  ("AdminToken")}`
+            }
+          }
+        )
+        res = await res.json();
+        if(res){
+          console.log(res);
+         setClasses(res?.data?.classes || [])
+        }
+        
+      } catch (error) {
+        console.log(error);
+      }
+    })()
+    
+  }, []);
 
   // Function to handle the deletion of a teacher
   const DeleteClass = (index) => {
@@ -66,6 +86,7 @@ const ClassTable = () => {
             </tr>
           </thead>
           <tbody className="bg-[#2E2E48] text-white">
+          {classes.length == 0 ? <Loader/> : ""}
             {classes.map((Class, index) => (
               <tr key={index} className="hover:bg-[#383854]">
                 <td className="px-6 py-4 text-sm font-medium">{Class.class}</td>

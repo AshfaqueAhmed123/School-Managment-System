@@ -126,6 +126,34 @@ const logout = async (req, res) => {
 
 const updateAccountDetails = async (req, res) => {
   try {
+    const {fullname,email,phone_number,description} = req.body;
+    if(!fullname || !email || !phone_number || !description){
+      return res.status(200).json(
+        new ApiError(400,"all fields are required")
+      )
+    }
+    let admin = Admin.findOne({email});
+    console.log(admin);
+    
+    if(admin){
+      admin.email = email;
+      admin.fullname = fullname;
+      admin.phone_number = phone_number;
+      admin.description = description;
+      await admin.save({validateBeforeSave:false})
+        return res.status(200).json(
+          new ApiResponse(
+            200,
+            "updated account details",
+            res
+          )
+        )
+      
+    } else{
+      return res.status(200).json(
+        new ApiError(400,"admin not found")
+      )
+    }
   } catch (error) {
     return res
       .status(500)

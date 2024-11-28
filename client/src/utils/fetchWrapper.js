@@ -6,7 +6,7 @@ const fetchWrapper = async (endpoint, method, headers, body) => {
         "content-type":"application/json",
         ...headers,
       },
-      body: JSON.stringify(...body),
+      body: JSON.stringify(...body||[]),
     });
     res = await res.json();
     return res;

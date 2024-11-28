@@ -7,6 +7,8 @@ import {
 
 } from "../controllers/teacher.controllers.js"
 import { verifyTeacher } from "../middlewares/teacherAuth.middleware.js";
+import {verfifyAdmin} from "../middlewares/AdminAuth.middleware.js"
+import { Teacher } from "../model/Teacher.model.js";
 
 const router = Router();
 
@@ -27,7 +29,21 @@ router.route("/meeting/:id").get();
 router.route("/meeting/:id").patch();
 router.route("/meeting/:id").delete();
 
+// admin will get this data
+router.route("/allTeachers").get(async(req,res)=>{
+    let allTeachersCount = await Teacher.find();
+    allTeachersCount = allTeachersCount.length
+    res.json({
+        num : allTeachersCount
+    })
+})
 
+router.route("/allTeachersList").get(async(req,res)=>{
+    let AllTeachersList = await Teacher.find();
+    res.json({
+        list : AllTeachersList
+    })
+})
 
 
 

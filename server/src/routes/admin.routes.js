@@ -13,7 +13,7 @@ const router = Router();
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").post(verfifyAdmin,logout);
-router.route("/update-account").patch();
+router.route("/update-account").patch(updateAccountDetails);
 router.route("/refreshAccessToken").post();
 
 

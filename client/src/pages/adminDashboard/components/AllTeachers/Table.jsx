@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 
 import {
@@ -10,17 +10,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import CreateTeacherForm from "./CreateNewTeacherForm";
+import Loader  from "@/./Loader";
 
 let color = ["#2E2E48", "#383854", "#475BE8"];
 
 const TeacherTable = () => {
   // Dummy teacher data
   const [teachers, setTeachers] = useState([
-    { name: "John Doe", subject: "Math", class: "10th" },
-    { name: "Jane Smith", subject: "English", class: "12th" },
-    { name: "Emma Brown", subject: "Science", class: "9th" },
-    { name: "Michael Johnson", subject: "History", class: "11th" },
-    { name: "Olivia Davis", subject: "Geography", class: "10th" },
+    
   ]);
 
   // Function to handle the deletion of a teacher
@@ -28,6 +25,33 @@ const TeacherTable = () => {
     const updatedTeachers = teachers.filter((_, i) => i !== index);
     setTeachers(updatedTeachers);
   };
+
+  
+  useEffect(() => {
+    (async ()=>{
+      try {
+        let res = await fetch(
+          "http://localhost:4000/teacher/allTeachersList",
+          {
+            method:"GET",
+            headers:{
+              "content-type":"application/json",
+              "Authorization":`Bearer ${localStorage.getItem  ("AdminToken")}`
+            }
+          }
+        )
+        res = await res.json();
+        if(res){
+          console.log(res);
+         setTeachers(res?.list || [])
+        }
+        
+      } catch (error) {
+        console.log(error);
+      }
+    })()
+    
+  }, []);
 
   return (
     <div className="p-6">
@@ -72,13 +96,14 @@ const TeacherTable = () => {
             </tr>
           </thead>
           <tbody className="bg-[#2E2E48] text-white">
+            {teachers.length == 0 ? <Loader/> : ""}
             {teachers.map((teacher, index) => (
               <tr key={index} className="hover:bg-[#383854]">
                 <td className="px-6 py-4 text-sm font-medium">
-                  {teacher.name}
+                  {teacher.fullname}
                 </td>
                 <td className="px-6 py-4 text-sm">{teacher.subject}</td>
-                <td className="px-6 py-4 text-sm">{teacher.class}</td>
+                <td className="px-6 py-4 text-sm">{teacher.class || "xth"}</td>
                 <td className="px-6 py-4 text-sm text-center">
                   {/* Delete Button */}
                   <button

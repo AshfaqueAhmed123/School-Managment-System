@@ -6,10 +6,18 @@ import gallery_3 from "../../../../assets/gallery-3.png"
 import gallery_4 from "../../../../assets/gallery-4.png"
 import white_arrow from "../../../../assets/white-arrow.png"
 
-
+import { useNavigate } from 'react-router-dom'
 
 const College = () => {
+
+    const navigate = useNavigate();
+
+    const goToMemories = () =>{
+      navigate("/memories")
+    }
+
   return (
+
     <div className='college' id='college'>
         <div className="gallery">
             <img src={gallery_1} alt="" />
@@ -17,7 +25,9 @@ const College = () => {
             <img src={gallery_3} alt="" />
             <img src={gallery_4} alt="" />
         </div>
-        <button className='btn dark-btn m-auto'>See more here<img className='w-[30px] ml-3' src={white_arrow} alt="" />
+        <button
+        onClick={goToMemories}
+         className='btn dark-btn m-auto'>See more here<img className='w-[30px] ml-3' src={white_arrow} alt="" />
         </button>
     </div>
   )

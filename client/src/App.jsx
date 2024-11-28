@@ -8,6 +8,7 @@ import TeacherDashboard from "./pages/teacherDashboard/TeacherDashboard";
 import ParentDashboard from "./pages/parentDashboard/ParentDashboard";
 import SigninOptions from "./pages/AuthPages/Login/SigninOptions";
 import RegisterOptions from "./pages/AuthPages/SignUp/RegisterOptions";
+import Memories from "./components/custom/homePage/Memories/Memories";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Router>
         <Routes>
             <Route path="/" element={<HomePage/>} />
+            <Route path="/memories" element={<Memories/>} />
             <Route path="/admin/*" element={<AdminDashboard/>} />
             <Route path="/student/*" element={<StudentDashboard/>} />
             <Route path="/teacher/*" element={<TeacherDashboard/>} />

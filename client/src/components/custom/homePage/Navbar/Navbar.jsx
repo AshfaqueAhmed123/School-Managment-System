@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import "./Navbar.css";
-import logo from "../../../../assets/logo.png";
+import logo from "../../../../assets/iba.jpeg";
 import {Link} from "react-scroll"
 import menu_icon from "../../../../assets/menu-icon.png"
 import {Link as RLink} from "react-router-dom"
@@ -85,7 +85,10 @@ const Navbar = () => {
         sticky ? "dark-nav" : ""
       }`}
     >
-      <img src={logo} className="w-[180px]" alt="ibaccdadu" />
+      {/* <img src={logo} className="w-[100px]" alt="ibaccdadu" /> */}
+      <div className="w-20 h-20 rounded-full bg-red-500 overflow-hidden">
+          <img src={logo} alt="" />
+      </div>
       <ul className={mobileMenu ? "" : "hide-mobile-menu flex items-center"}>
         <li className="inline-block my-2 mx-4 text-[16px]">
           <Link to="hero" smooth={true} offset={0} duration={500}>
@@ -93,8 +96,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="inline-block my-2 mx-4 text-[16px]">
-          <Link to="program" smooth={true} offset={-260} duration={500}>
-            Program
+          <Link to="faculty" smooth={true} offset={-260} duration={500}>
+          Our faculty
           </Link>
         </li>
         <li className="inline-block my-2 mx-4 text-[16px]">

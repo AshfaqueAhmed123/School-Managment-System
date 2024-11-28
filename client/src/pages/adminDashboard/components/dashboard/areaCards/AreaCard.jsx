@@ -6,6 +6,9 @@ import {
   Tooltip,
 } from "recharts";
 
+import { useState,useEffect } from "react";
+import { fetchWrapper } from "@/utils/fetchWrapper";
+
 const AreaCard = ({ colors, percentFillValue, cardInfo }) => {
   const maleCount = (percentFillValue / 100) * 360; // 360 degress for a full circle
   const femaleCount = 360 - maleCount;
@@ -18,6 +21,7 @@ const AreaCard = ({ colors, percentFillValue, cardInfo }) => {
   const renderTooltipContent = (value) => {
     return `${(value / 360) * 100} %`;
   };
+
 
   return (
     <div className="area-card">

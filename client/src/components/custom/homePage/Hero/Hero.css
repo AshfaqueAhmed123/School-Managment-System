@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Protest+Revolution&display=swap');
+
 .hero{
     width: 100%;
     min-height:100vh;
@@ -10,6 +13,8 @@
   /* media query */
   @media (max-width:850px){
     .hero-text h1{
+      font-family: "Protest Revolution", sans-serif;
+      font-style: normal;
       font-size: 40px;
     }
   }

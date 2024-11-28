@@ -23,6 +23,35 @@ const SettingsPage = () => {
   // Handle form submission (Save)
   const handleSave = () => {
     setIsEditing(false);
+    (async ()=>{
+      try {
+        let res = await fetch(
+          "http://localhost:4000/admin/update-account",
+          {
+            method:"PATCH",
+            headers:{
+              "content-type":"application/json",
+              "Authorization":`Bearer ${localStorage.getItem  ("AdminToken")}`
+            },
+            body:JSON.stringify({
+
+              fullname : userData.fullName,
+              email : userData.email,
+              phone_number : userData.phone,
+              description:userData.desc
+ 
+            })
+          }
+        )
+        res = await res.json();
+        if(res){
+          console.log(res);
+        }
+        
+      } catch (error) {
+        console.log(error);
+      }
+    })()
     alert("Changes saved successfully!");
   };
 
@@ -94,7 +123,7 @@ const SettingsPage = () => {
           {/* Address */}
           <div>
             <label htmlFor="address" className="text-white font-semibold">
-              Address
+              Description
             </label>
             <textarea
               id="address"
