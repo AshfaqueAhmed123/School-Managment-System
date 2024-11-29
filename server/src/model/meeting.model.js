@@ -2,24 +2,33 @@ import mongoose,{Schema,model} from "mongoose";
 
 const meeting = new Schema({
     meetingID:{
-        type:String,
-        required:true
+        type:String
     },
     teacher:{
         type:mongoose.Schema.Types.ObjectId,
-        ref : "Teacher"
+        ref : "Teacher",
+        required:true
     },
     parent:{
         type:mongoose.Schema.Types.ObjectId,
-        ref : "Parent"
+        ref : "Parent",
+        required:true
+    },
+    student:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref : "student",
+        // required:true
+    },
+    class:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref : "class",
+        // required:true
     },
     scheduleDate:{
         type:String,
-        required:true
     },
     scheduleTime:{
         type:String,
-        required:true
     },
     scheduleStatus:{
         type:String,

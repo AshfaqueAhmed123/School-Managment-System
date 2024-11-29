@@ -39,6 +39,7 @@ import teacherRouter from "./src/routes/teacher.routes.js"
 import parentRouter from "./src/routes/parent.routes.js"
 import schoolRouter from "./src/routes/student.routes.js"
 import classRouter from "./src/routes/class.routes.js"
+import meetingRouter from "./src/routes/meeting.routes.js"
 
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
@@ -46,6 +47,7 @@ app.use("/teacher", teacherRouter);
 app.use("/parent", parentRouter);
 app.use("/school", schoolRouter);
 app.use("/class", classRouter);
+app.use("/meeting", meetingRouter);
 
 
 // AuthRoutes

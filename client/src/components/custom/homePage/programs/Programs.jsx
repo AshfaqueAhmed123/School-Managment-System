@@ -1,43 +1,51 @@
 // src/components/FacultySection.jsx
 import React from "react";
 import { motion } from "framer-motion";  // To add smooth animations
-import faculty1 from "@/./assets/faculty1.png"
+import faculty1 from "@/./assets/1pic.png"
+import faculty2 from "@/./assets/2pic.png"
+import faculty3 from "@/./assets/3pic.png"
+import faculty4 from "@/./assets/4.png"
+import faculty5 from "@/./assets/5.png"
+import faculty6 from "@/./assets/6.png"
+import faculty7 from "@/./assets/7.png"
+
+
 
 const facultyMembers = [
   {
-    name: "Dr. John Doe",
+    name: "Miss Asya",
     subject: "Mathematics",
     image: faculty1, // Add your images here
   },
   {
-    name: "Prof. Jane Smith",
-    subject: "Physics",
-    image: faculty1,
+    name: "Prof. Imran Ali",
+    subject: "Islamiyat",
+    image: faculty2,
   },
   {
-    name: "Dr. Emily Johnson",
+    name: "Dr. Sikandar sagar",
+    subject: "sindhi",
+    image: faculty3,
+  },
+  {
+    name: "Prof, Farman Illahi",
+    subject: "Pakistan-studies",
+    image: faculty4,
+  },
+  {
+    name: "Miss Ammeran",
+    subject: "General",
+    image: faculty5,
+  },
+  {
+    name: "Miss, Zehra",
     subject: "Chemistry",
-    image: faculty1,
+    image: faculty6,
   },
   {
-    name: "Dr. Michael Lee",
-    subject: "Computer Science",
-    image: faculty1,
-  },
-  {
-    name: "Dr. Michael Lee",
-    subject: "Computer Science",
-    image: faculty1,
-  },
-  {
-    name: "Dr. Michael Lee",
-    subject: "Computer Science",
-    image: faculty1,
-  },
-  {
-    name: "Dr. Michael Lee",
-    subject: "Computer Science",
-    image: faculty1,
+    name: "Mr, Fida Hussain",
+    subject: "English",
+    image: faculty7,
   },
 ];
 
@@ -61,7 +69,7 @@ const FacultySection = () => {
             <img
               src={faculty.image}
               alt={faculty.name}
-              className="w-full h-48 object-cover rounded-t-xl"
+              className="w-full h-48 object-contain rounded-t-xl"
             />
             <div className="text-center mt-4">
               <h3 className="text-2xl font-semibold text-gray-800">{faculty.name}</h3>

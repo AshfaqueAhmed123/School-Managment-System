@@ -57,7 +57,7 @@ const goBackHome = ()=> {
               key={index}
               className="max-w-sm rounded-lg overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105"
             >
-              <img src={image} alt="Student" className="w-full h-56 object-cover" />
+              <img src={image} alt="Student" className="min-w-[200px] w-full  h-56 object-cover" />
             </div>
           ))}
         </div>
